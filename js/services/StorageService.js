@@ -1,8 +1,22 @@
-//+====================== Storage Service ======================+
-// This class acts as an API for the localStorage.
-// Note: Key is a data collection name within local storage.
+import { STORAGE_KEYS } from "../utils/StorageKeys.js";
 
+//+====================== Storage Service ======================+
 export class StorageService{
+    static initialize(){
+
+        const defaultStorage = {
+            [STORAGE_KEYS.USERS]: [],
+            [STORAGE_KEYS.EXAMS]: [],
+            [STORAGE_KEYS.RESULTS]: [],
+            [STORAGE_KEYS.CURRENT_USER]: null
+        };
+
+        for (const [key, defaultValue] of Object.entries(defaultStorage)) {
+            if (localStorage.getItem(key) === null) 
+                localStorage.setItem(key, JSON.stringify(defaultValue));
+        }
+    }
+
     static get(key){
         const data = localStorage.getItem(key);
         return data ? JSON.parse(data) : [];
@@ -21,11 +35,12 @@ export class StorageService{
     }
 
 
-    static update(key, item){
+    static update(key, id, updatedItem) {
         const data = StorageService.get(key);
-        
+
         const updatedData = data.map(item =>
-                item.id === updatedItem.id ? updatedItem : item);
+            item.id === id ? updatedItem : item
+        );
 
         StorageService.save(key, updatedData);
     }
@@ -40,6 +55,6 @@ export class StorageService{
 
     static find(key, id){
         const data = StorageService.get(key);
-        return data.filter(item => item.id !== id);
+        return data.find(item => item.id === id);
     }
 }

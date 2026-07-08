@@ -2,7 +2,7 @@
 import { User } from "./User.js";
 
 export class Teacher extends User {
-  constructor(id, fullName, email, password) {
-    super(id, fullName, email, password, "teacher");
+  constructor(fullName, id, email, password) {
+    super(fullName, id, email, password, "teacher");
   }
 }
