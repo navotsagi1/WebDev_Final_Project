@@ -5,29 +5,56 @@ import { Student } from "../models/Student.js";
 
 //+====================== Authentication Service ======================+
 export class AuthService{
-    static register(fullName, id, email, password, role){
-        const check = StorageService.find(STORAGE_KEYS.USERS, id);
-
-        if(check == []){
-            return{
+    static register(fullName, id, email, password, role) {
+        if (!fullName || !id || !email || !password || !role) {
+            return {
                 success: false,
-                message: `User "${id}" already exists.`
-            }
+                message: "All fields are required."
+            };
         }
-            
-        if (role == "teacher"){
-            const teacher = new Teacher(fullName, id, email, password);
-            StorageService.add(STORAGE_KEYS.USERS, teacher);
+
+        if (role !== "teacher" && role !== "student") {
+            return {
+                success: false,
+                message: "Invalid user role."
+            };
         }
-        if(role == "student"){
-            const student = new Student(fullName, id, email, password);
-            StorageService.add(STORAGE_KEYS.USERS, student);
+
+        const users = StorageService.get(STORAGE_KEYS.USERS);
+
+        const idExists = users.some(user => user.id === id);
+
+        if (idExists) {
+            return {
+                success: false,
+                message: "A user with this ID already exists."
+            };
         }
-        
+
+        const emailExists = users.some(user => user.email === email);
+
+        if (emailExists) {
+            return {
+                success: false,
+                message: "A user with this email already exists."
+            };
+        }
+
+        let user;
+
+        if (role === "teacher") {
+            user = new Teacher(fullName, id, email, password);
+        } else {
+            user = new Student(fullName, id, email, password);
+        }
+
+        StorageService.add(STORAGE_KEYS.USERS, user);
+
         return {
-                success: true,
-                message: `User "${id}" was created successfully.`
-            }
+            success: true,
+            data: user,
+            message: "Registration successful."
+        };
     }
 
 
