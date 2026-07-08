@@ -3,14 +3,13 @@ import { ExamService } from "../services/ExamService.js";
 
 
 
-
 //+====================== Constants ======================+
 const teacherName = document.getElementById("teacher-name");
 const logoutButton = document.getElementById("logout-button");
 const createExamForm = document.getElementById("create-exam-form");
 const message = document.getElementById("message");
 const examList = document.getElementById("exam-list");
-
+const resultsButton = document.getElementById("results-button");
 
 
 
@@ -44,6 +43,10 @@ function registerEventListeners(currentUser) {
     createExamForm.addEventListener("submit", event => {
         handleCreateExam(event, currentUser);
     });
+
+    resultsButton.addEventListener("click", handleResultButton);
+
+    resultsButton.addEventListener("click", handleResultButton);
 }
 
 
@@ -88,6 +91,13 @@ function handleCreateExam(event, currentUser) {
 
     renderExamList(currentUser.id);
 }
+
+
+function handleResultButton(){
+    window.location.href = "results.html";
+}
+
+
 
 
 

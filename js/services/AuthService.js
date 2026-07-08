@@ -79,4 +79,22 @@ export class AuthService{
         return StorageService.find(STORAGE_KEYS.USERS, currentUserId);
     }
 
+
+
+    static getUserById(userId) {
+        const user = StorageService.find(STORAGE_KEYS.USERS, userId);
+
+        if (!user) {
+            return {
+                success: false,
+                message: "User not found."
+            };
+        }
+
+        return {
+            success: true,
+            data: user
+        };
+    }
+
 }

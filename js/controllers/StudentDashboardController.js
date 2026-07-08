@@ -9,7 +9,7 @@ const studentName = document.getElementById("student-name");
 const logoutButton = document.getElementById("logout-button");
 const message = document.getElementById("message");
 const examList = document.getElementById("exam-list");
-
+const resultsButton = document.getElementById("results-button");
 
 //+====================== Run ======================+
 initialize();
@@ -34,6 +34,7 @@ function initialize() {
 
 function registerEventListeners() {
     logoutButton.addEventListener("click", handleLogout);
+    resultsButton.addEventListener("click", handleResultButton);
 }
 
 
@@ -45,6 +46,10 @@ function handleLogout() {
     window.location.href = "login.html";
 }
 
+
+function handleResultButton(){
+    window.location.href = "results.html";
+}
 
 
 

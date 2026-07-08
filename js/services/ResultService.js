@@ -38,4 +38,53 @@ export class ResultService {
             message: "Exam submitted successfully."
         };
     }
+
+    static getResultsByStudent(studentId) {
+        const results = StorageService.get(STORAGE_KEYS.RESULTS);
+
+        const studentResults = results.filter(result =>
+            result.studentId === studentId
+        );
+
+        return {
+            success: true,
+            data: studentResults,
+            message: "Student results loaded successfully."
+        };
+    }
+
+
+    static getResultsByExam(examId) {
+        const results = StorageService.get(STORAGE_KEYS.RESULTS);
+
+        const examResults = results.filter(result =>
+            result.examId === examId
+        );
+
+        return {
+            success: true,
+            data: examResults,
+            message: "Exam results loaded successfully."
+        };
+    }
+
+
+    static getResultsForTeacher(teacherId) {
+        const results = StorageService.get(STORAGE_KEYS.RESULTS);
+        const exams = StorageService.get(STORAGE_KEYS.EXAMS);
+
+        const teacherExamIds = exams
+            .filter(exam => exam.teacherId === teacherId)
+            .map(exam => exam.id);
+
+        const teacherResults = results.filter(result =>
+            teacherExamIds.includes(result.examId)
+        );
+
+        return {
+            success: true,
+            data: teacherResults,
+            message: "Teacher results loaded successfully."
+        };
+    }
 }
