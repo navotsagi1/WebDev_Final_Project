@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Teacher Dashboard</h1>
+
+        <p>
+            Welcome,
+            <span id="teacher-name"></span>
+        </p>
+
+        <button id="logout-button">
+            Logout
+        </button>
+    </header>
+
+    <hr>
+
+    <section>
+
+        <h2>Create New Exam</h2>
+
+        <form id="create-exam-form">
+
+            <label for="exam-title">
+                Title
+            </label>
+            <input
+                type="text"
+                id="exam-title"
+                placeholder="Introduction to Java"
+                required
+            >
+
+            <label for="exam-description">
+                Description
+            </label>
+            <textarea
+                id="exam-description"
+                placeholder="Final exam covering modules 1-5."
+                rows="4"
+            ></textarea>
+
+            <label for="exam-category">
+                Category
+            </label>
+            <input
+                type="text"
+                id="exam-category"
+                placeholder="Programming"
+            >
+
+            <label for="exam-code">
+                Exam Code
+            </label>
+            <input
+                type="text"
+                id="exam-code"
+                placeholder="CS101"
+                required
+            >
+
+            <label for="exam-duration">
+                Duration (minutes)
+            </label>
+            <input
+                type="number"
+                id="exam-duration"
+                placeholder="90"
+                min="1"
+                required
+            >
+
+            <button type="submit">
+                Create Exam
+            </button>
+
+        </form>
+
+        <p id="message"></p>
+
+    </section>
+
+    <hr>
+
+    <section>
+
+        <h2>My Exams</h2>
+
+        <div id="exam-list">
+
+            <!--
+                The controller will dynamically generate
+                cards similar to:
+
+                --------------------------------------
+                Java Final
+                Programming
+                Duration: 90 minutes
+
+                [Manage] [Delete]
+                --------------------------------------
+            -->
+
+        </div>
+
+    </section>
+
+    <script type="module" src="../js/main.js"></script>
+    <script type="module" src="../js/controllers/TeacherDashboardController.js"></script>
+
+</body>
+
+</html>
