@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <h1>Login</h1>
+
+    <form id="login-form">
+
+        <label for="id-number">ID Number</label>
+        <input
+            type="text"
+            id="id-number"
+            placeholder="123456789"
+            required
+        >
+
+        <label for="password">Password</label>
+        <input
+            type="password"
+            id="password"
+            placeholder="Enter your password"
+            required
+        >
+
+        <button type="submit">
+            Login
+        </button>
+
+    </form>
+
+    <p id="message"></p>
+
+    <a href="register.html">
+        Don't have an account?
+    </a>
+</body>
+<script type="module" src="../js/main.js"></script>
+<script type="module" src="../js/controllers/LoginController.js"></script>
+</html>

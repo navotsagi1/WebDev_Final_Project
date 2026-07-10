@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exam Details</title>
+</head>
+<body>
+    <h1>Exam Details</h1>
+
+    <button id="back-button">Back</button>
+    <button id="logout-button">Logout</button>
+
+    <p id="message"></p>
+
+    <section>
+        <h2>Edit Exam</h2>
+
+        <form id="exam-info-form">
+            <input type="text" id="exam-title" placeholder="Exam title" required>
+            <br><br>
+
+            <textarea id="exam-description" placeholder="Exam description"></textarea>
+            <br><br>
+
+            <button type="submit">Save Exam</button>
+        </form>
+    </section>
+
+    <hr>
+
+    <section>
+        <h2>Add Question</h2>
+
+        <form id="add-question-form">
+            <input type="text" id="question-text" placeholder="Question text" required>
+            <br><br>
+
+            <button type="submit">Add Question</button>
+        </form>
+    </section>
+
+    <hr>
+
+    <section>
+        <h2>Questions</h2>
+        <div id="question-list"></div>
+    </section>
+
+    <script type="module" src="../js/controllers/ExamDetailsController.js"></script>
+</body>
+</html>
