@@ -1,4 +1,3 @@
-````md
 # Online Examination System
 
 ## Live Website
@@ -385,4 +384,4 @@ Possible future improvements include:
 
 - **Name:** Navot Saggi
 - **Student ID:** 208745083
-````
+```
