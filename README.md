@@ -6,7 +6,7 @@
 GitHub Pages:
 
 ```text
-<insert-github-pages-address-here>
+https://github.com/navotsagi1/WebDev_Final_Project
 ```
 
 ---
